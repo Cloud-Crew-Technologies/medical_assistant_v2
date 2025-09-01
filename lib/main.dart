@@ -13,6 +13,9 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   print('firebase initialized');
 
+  // Flutter verserion 3.35.1
+  print("successful");
+
   runApp(
     GetMaterialApp(
       title: "Application",
