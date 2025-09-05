@@ -6,6 +6,7 @@ import '../modules/Health_metrics_Screen/binding/Health_metrics_binding.dart';
 import '../modules/Health_metrics_Screen/view/Health_metrics_view.dart';
 import '../modules/chat_screen/bindings/chat_screen_binding.dart';
 import '../modules/chat_screen/views/chat_screen_view.dart';
+import '../modules/meet/pages/connect.dart';
 
 part 'app_routes.dart';
 
@@ -26,5 +27,6 @@ class AppPages {
       binding: ChatScreenBinding(),
     ),
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
+    GetPage(name: _Paths.MEET_CONNECT, page: () => const ConnectPage()),
   ];
 }

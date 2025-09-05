@@ -178,7 +178,7 @@ class HealthMetricsView extends GetView<HealthMetricsController> {
                     final consult = controller.consultations[index];
                     return GestureDetector(
                       onTap: () {
-                        Get.toNamed(Routes.HOME);
+                        Get.toNamed(Routes.MEET_CONNECT);
                       },
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 12),
