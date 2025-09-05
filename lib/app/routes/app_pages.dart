@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
-import 'package:medical_assistant_v2/app/modules/home/bindings/home_binding.dart';
-import 'package:medical_assistant_v2/app/modules/home/views/home_view.dart';
 
 import '../modules/Health_metrics_Screen/binding/Health_metrics_binding.dart';
 import '../modules/Health_metrics_Screen/view/Health_metrics_view.dart';
+import '../modules/chat_history/bindings/chat_history_binding.dart';
+import '../modules/chat_history/views/chat_history_view.dart';
 import '../modules/chat_screen/bindings/chat_screen_binding.dart';
 import '../modules/chat_screen/views/chat_screen_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
 import '../modules/meet/pages/connect.dart';
 
 part 'app_routes.dart';
@@ -28,5 +30,10 @@ class AppPages {
     ),
     GetPage(name: _Paths.HOME, page: () => HomeView(), binding: HomeBinding()),
     GetPage(name: _Paths.MEET_CONNECT, page: () => const ConnectPage()),
+    GetPage(
+      name: _Paths.CHAT_HISTORY,
+      page: () => const ChatHistoryView(),
+      binding: ChatHistoryBinding(),
+    ),
   ];
 }
