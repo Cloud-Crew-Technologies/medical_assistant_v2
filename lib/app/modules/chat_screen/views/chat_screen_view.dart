@@ -79,7 +79,9 @@ class ChatScreenView extends GetView<ChatController> {
                 child: IconButton(
                   icon: Icon(Icons.message,
                       color: isDark ? Colors.white : Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/chat-history');
+                  },
                 ),
               ),
             ],
