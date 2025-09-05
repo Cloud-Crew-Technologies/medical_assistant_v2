@@ -120,7 +120,7 @@ class _ParticipantStatsWidgetState extends State<ParticipantStatsWidget> {
     listeners.clear();
     for (var track in [
       ...widget.participant.videoTrackPublications,
-      ...widget.participant.audioTrackPublications
+      ...widget.participant.audioTrackPublications,
     ]) {
       if (track.track != null) {
         _setUpListener(track.track!);
@@ -151,18 +151,21 @@ class _ParticipantStatsWidgetState extends State<ParticipantStatsWidget> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black.withValues(alpha: 0.3),
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-        horizontal: 8,
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+      child: Column(
+        children: [
+          const Text(
+            'audio stats',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          ...stats['audio']!.entries.map((e) => Text('${e.key}: ${e.value}')),
+          const Text(
+            'video stats',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          ...stats['video']!.entries.map((e) => Text('${e.key}: ${e.value}')),
+        ],
       ),
-      child: Column(children: [
-        const Text('audio stats',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        ...stats['audio']!.entries.map((e) => Text('${e.key}: ${e.value}')),
-        const Text('video stats',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-        ...stats['video']!.entries.map((e) => Text('${e.key}: ${e.value}')),
-      ]),
     );
   }
 }

@@ -166,23 +166,23 @@ abstract class _ParticipantWidgetState<T extends ParticipantWidget>
           ),
         ),
         if (widget.showStatsLayer)
-          Positioned(
-            top: 130,
-            right: 30,
-            child: ParticipantStatsWidget(participant: widget.participant),
-          ),
-        if (activeAudioTrack != null && !activeAudioTrack!.muted)
-          Positioned(
-            top: 10,
-            right: 10,
-            left: 10,
-            bottom: 10,
-            child: SoundWaveformWidget(
-              key: ValueKey(activeAudioTrack!.hashCode),
-              audioTrack: activeAudioTrack!,
-              width: 8,
+          // Positioned(
+          //   top: 130,
+          //   right: 30,
+          //   child: ParticipantStatsWidget(participant: widget.participant),
+          // ),
+          if (activeAudioTrack != null && !activeAudioTrack!.muted)
+            Positioned(
+              top: 10,
+              right: 10,
+              left: 10,
+              bottom: 10,
+              child: SoundWaveformWidget(
+                key: ValueKey(activeAudioTrack!.hashCode),
+                audioTrack: activeAudioTrack!,
+                width: 8,
+              ),
             ),
-          ),
       ],
     ),
   );
