@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medical_assistant_v2/app/routes/app_pages.dart';
-import 'package:medical_assistant_v2/app/theme/theme_data.dart';
+// import 'package:medical_assistant_v2/app/routes/app_pages.dart';
+// import 'package:medical_assistant_v2/app/theme/theme_data.dart';
 import '../controllers/chat_history_controller.dart';
 
 class ChatHistoryView extends GetView<ChatHistoryController> {
