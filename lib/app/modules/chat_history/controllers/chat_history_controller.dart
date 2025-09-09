@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:medical_assistant_v2/app/routes/app_pages.dart';
+// import 'package:medical_assistant_v2/app/routes/app_pages.dart';
 
 class ChatHistoryController extends GetxController {
   // Observable variables
