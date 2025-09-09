@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:medical_assistant_v2/app/modules/chat_history/models/chat_history_model.dart';
 import 'package:medical_assistant_v2/app/routes/app_pages.dart';
 // import 'package:medical_assistant_v2/app/routes/app_pages.dart';
 // import 'package:medical_assistant_v2/app/theme/theme_data.dart';
