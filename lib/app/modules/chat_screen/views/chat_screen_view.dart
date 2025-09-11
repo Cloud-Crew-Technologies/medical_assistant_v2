@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:medical_assistant_v2/app/routes/app_pages.dart';
 import 'package:medical_assistant_v2/app/theme/theme_data.dart';
 
 import '../controllers/chat_screen_controller.dart';
@@ -79,7 +80,9 @@ class ChatScreenView extends GetView<ChatController> {
                 child: IconButton(
                   icon: Icon(Icons.message,
                       color: isDark ? Colors.white : Colors.black),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(Routes.CHAT_HISTORY);
+                  },
                 ),
               ),
             ],
