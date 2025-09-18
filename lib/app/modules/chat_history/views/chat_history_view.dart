@@ -16,7 +16,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
 
     return Scaffold(
       body: Container(
-        // 🌙 Gradient background updated
+        // Background gradient
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -27,50 +27,41 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
             stops: const [0.0, 0.6],
           ),
         ),
-
         child: SafeArea(
           child: Column(
             children: [
-              // Custom Header
+              // Header
               Container(
                 padding: const EdgeInsets.all(20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Back button
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back_ios_new,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    const SizedBox(height: 20),
-
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "My AI Chats",
-                        style: GoogleFonts.inter(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.arrow_back_ios_new,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                          onPressed: () => Navigator.pop(context),
                         ),
                       ),
                     ),
-
+                    const SizedBox(height: 20),
+                    Text(
+                      "My AI Chats",
+                      style: GoogleFonts.inter(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
                     const SizedBox(height: 24),
 
                     // Tab buttons
@@ -80,13 +71,11 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                         color: Colors.white.withOpacity(0.2),
                         borderRadius: BorderRadius.circular(25),
                       ),
-                      child: Obx(
-                        () => Row(
-                          children: [
-                            _buildTabButton('recent'),
-                            _buildTabButton('trash'),
-                          ],
-                        ),
+                      child: Row(
+                        children: [
+                          _buildTabButton('recent'),
+                          _buildTabButton('trash'),
+                        ],
                       ),
                     ),
                   ],
@@ -104,13 +93,9 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                       topRight: Radius.circular(25),
                     ),
                   ),
-
                   child: Column(
                     children: [
-                      // Search Bar
                       _buildSearchBar(isDark),
-
-                      // Section Header
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Row(
@@ -131,7 +116,8 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () => Get.toNamed(Routes.CHAT_SCREEN),
+                              onPressed: () =>
+                                  Get.toNamed(Routes.CHAT_SCREEN),
                               child: Text(
                                 'See All',
                                 style: TextStyle(
@@ -145,8 +131,6 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                           ],
                         ),
                       ),
-
-                      // Chat History
                       Expanded(child: _buildChatHistory(isDark)),
                     ],
                   ),
@@ -159,7 +143,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
     );
   }
 
-  // 🔹 Tab Button Builder
+  // Tab button
   Widget _buildTabButton(String tab) {
     return Expanded(
       child: GestureDetector(
@@ -189,7 +173,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
     );
   }
 
-  // 🔹 Search Bar
+  // Search bar
   Widget _buildSearchBar(bool isDark) {
     return Container(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 16),
@@ -232,7 +216,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
     );
   }
 
-  // 🔹 Chat History Builder
+  // Chat history list
   Widget _buildChatHistory(bool isDark) {
     return Obx(() {
       if (controller.isLoading.value) {
@@ -267,7 +251,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
     });
   }
 
-  // 🔹 Empty State
+  // Empty state
   Widget _buildEmptyState(bool isDark) {
     return Center(
       child: Column(
@@ -309,11 +293,9 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
     );
   }
 
-  // 🔹 Chat Session Card
+  // Chat session card
   Widget _buildEnhancedChatSessionCard(
-    ChatSession session,
-    BuildContext context,
-  ) {
+      ChatSession session, BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     IconData getSessionIcon() {
@@ -362,7 +344,6 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
           color: isDark ? kDarkSecondaryBg : Colors.grey[100]!,
         ),
       ),
-
       child: InkWell(
         onTap: () => controller.openChatSession(session),
         borderRadius: BorderRadius.circular(16),
@@ -378,7 +359,6 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
               child: Icon(getSessionIcon(), color: getIconColor(), size: 24),
             ),
             const SizedBox(width: 16),
-
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -394,31 +374,25 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 8),
-
                   Row(
                     children: [
                       Flexible(
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: isDark
-                                ? kDarkSecondaryBg
-                                : Colors.grey[100],
+                            color:
+                                isDark ? kDarkSecondaryBg : Colors.grey[100],
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.chat_bubble_outline,
-                                size: 14,
-                                color: isDark
-                                    ? Colors.grey[300]
-                                    : Colors.grey[600],
-                              ),
+                              Icon(Icons.chat_bubble_outline,
+                                  size: 14,
+                                  color: isDark
+                                      ? Colors.grey[300]
+                                      : Colors.grey[600]),
                               const SizedBox(width: 4),
                               Flexible(
                                 child: Text(
@@ -438,13 +412,10 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                         ),
                       ),
                       const SizedBox(width: 8),
-
                       Flexible(
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: Colors.red[50],
                             borderRadius: BorderRadius.circular(12),
@@ -452,11 +423,8 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Icon(
-                                Icons.favorite,
-                                size: 14,
-                                color: Colors.red[400],
-                              ),
+                              Icon(Icons.favorite,
+                                  size: 14, color: Colors.red[400]),
                               const SizedBox(width: 4),
                               Flexible(
                                 child: Text(
@@ -473,9 +441,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                           ),
                         ),
                       ),
-
                       const SizedBox(width: 8),
-
                       Text(
                         controller.formatTime(session.lastMessageTime),
                         style: TextStyle(
@@ -488,13 +454,10 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                 ],
               ),
             ),
-
             PopupMenuButton<String>(
-              icon: Icon(
-                Icons.more_vert,
-                color: isDark ? Colors.grey[400] : Colors.grey[400],
-                size: 20,
-              ),
+              icon: Icon(Icons.more_vert,
+                  color: isDark ? Colors.grey[400] : Colors.grey[400],
+                  size: 20),
               onSelected: (value) {
                 if (value == 'delete') {
                   _showDeleteConfirmation(session, context);
@@ -521,11 +484,8 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                       value: 'delete',
                       child: Row(
                         children: [
-                          Icon(
-                            Icons.delete_forever,
-                            size: 18,
-                            color: Colors.red,
-                          ),
+                          Icon(Icons.delete_forever,
+                              size: 18, color: Colors.red),
                           SizedBox(width: 8),
                           Text('Delete Forever'),
                         ],
@@ -533,13 +493,13 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                     ),
                   ];
                 }
-
                 return [
                   const PopupMenuItem(
                     value: 'open',
                     child: Row(
                       children: [
-                        Icon(Icons.open_in_new, size: 18, color: Colors.blue),
+                        Icon(Icons.open_in_new,
+                            size: 18, color: Colors.blue),
                         SizedBox(width: 8),
                         Text('Open Chat'),
                       ],
@@ -566,13 +526,13 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
 
   void _showDeleteConfirmation(ChatSession session, BuildContext context) {
     final isTrash = controller.activeTab.value == 'trash';
-
     Get.dialog(
       AlertDialog(
         backgroundColor: Theme.of(context).brightness == Brightness.dark
             ? kDarkCardBg
             : Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16)),
         title: Text(isTrash ? 'Delete Forever' : 'Move to Trash'),
         content: Text(
           isTrash
