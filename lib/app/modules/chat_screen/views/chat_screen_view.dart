@@ -224,7 +224,7 @@ class ChatBubble extends StatelessWidget {
               decoration: BoxDecoration(
                 color: message.isMe
                     ?  kNewTealColor
-                    : (isDark ? kNewTealColor : kLightCardColor),
+                    : (isDark ? kDarkSlateButtonColor : kLightCardColor),
                 borderRadius: BorderRadius.circular(16).copyWith(
                   bottomLeft:
                       message.isMe ? const Radius.circular(16) : Radius.zero,

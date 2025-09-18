@@ -22,8 +22,11 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -36,7 +39,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightTextButtonColor,
+                      color: isDark ? kDarkCardBg : kButtonColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -76,7 +79,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? kDarkCardBg : Colors.grey[100],
                     borderRadius: BorderRadius.circular(24),
                   ),
                   padding: EdgeInsets.all(24),
@@ -91,7 +94,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[800],
+                          color: isDark ? Colors.white : Colors.grey[800],
                         ),
                       ),
                       SizedBox(height: 40),
@@ -117,7 +120,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF26C6A8),
+                          backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor,
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -131,11 +134,11 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                                color: isDark ? Colors.white : Colors.black,
                               ),
                             ),
                             SizedBox(width: 8),
-                            Icon(Icons.arrow_forward, color: Colors.white),
+                            Icon(Icons.arrow_forward, color: isDark ? Colors.white : Colors.black),
                           ],
                         ),
                       ),
@@ -152,16 +155,18 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
   }
 
   Widget _buildRoleCard(String title, IconData icon, Color color) {
+    final theme = Theme.of(Get.context!);
+    final isDark = theme.brightness == Brightness.dark;
     return Obx(() => GestureDetector(
       onTap: () => controller.selectRole(title),
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: controller.selectedRole.value == title ? color.withOpacity(0.1) : Colors.grey[50],
+          color: controller.selectedRole.value == title ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: controller.selectedRole.value == title ? color : Colors.grey[300]!,
+            color: controller.selectedRole.value == title ? isDark ? color.withOpacity(0.5) : color : isDark ? kLightCardFontColor : Colors.grey[300]!,
             width: 2,
           ),
         ),
@@ -178,7 +183,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: Colors.grey[800],
+                color: isDark ? Colors.white : Colors.grey[800],
               ),
             ),
           ],

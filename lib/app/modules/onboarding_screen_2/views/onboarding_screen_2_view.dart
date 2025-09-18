@@ -8,8 +8,11 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+      backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -23,7 +26,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightTextButtonColor,
+                      color: isDark ? kDarkCardBg : kButtonColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -73,7 +76,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? kDarkCardBg : Colors.grey[100],
                     borderRadius: BorderRadius.circular(24),
                   ),
                   padding: EdgeInsets.all(24),
@@ -88,7 +91,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[800],
+                          color: isDark ? Colors.white : Colors.grey[800],
                         ),
                       ),
                       SizedBox(height: 40),
@@ -101,7 +104,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                             Container(
                               height: 80,
                               decoration: BoxDecoration(
-                                color: Colors.grey[100],
+                                color: isDark ? kDarkCardBg : Colors.grey[100],
                                 borderRadius: BorderRadius.circular(12),
                               ),
                             ),
@@ -123,7 +126,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                                 width: double.infinity,
                                 padding: const EdgeInsets.symmetric(vertical: 16),
                                 decoration: BoxDecoration(
-                                  color: isSelected ? kPrimaryColor : Colors.transparent,
+                                  color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : kcontinueButtonColor.withOpacity(0.5) : Colors.transparent,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
@@ -132,7 +135,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                                   style: TextStyle(
                                     fontSize: isSelected ? 48 : 32,
                                     fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-                                    color: isSelected ? Colors.black : Colors.grey[400],
+                                    color: isSelected ? isDark ? Colors.white : Colors.black : (isDark ? Colors.grey[400] : Colors.grey[600]),
                                   ),
                                 ),
                               );
@@ -147,7 +150,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: kLightButtonColor,
+                          backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor.withOpacity(0.5),
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -161,11 +164,11 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                                color: isDark ? Colors.white : Colors.black,
                               ),
                             ),
                             SizedBox(width: 8),
-                            Icon(Icons.arrow_forward, color: Colors.white),
+                            Icon(Icons.arrow_forward, color: isDark ? Colors.white : Colors.black),
                           ],
                         ),
                       ),

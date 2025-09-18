@@ -15,6 +15,7 @@ const Color kDarkPrimaryBg = Color(0xFF1E293A);
 const Color kDarkCardBg = Color(0xFF384050);       
 const Color kDarkTextFieldBg = Color(0xFF020617);  
 const Color kDarkSecondaryBg = Color(0xFF1E293B);  
+const Color kcontinueButtonColor = Color(0xFF26C6A8); // Continue button
 const Color kLightGradientStart = Color(0xFF0C9185);  // Light gradient start
 const Color kLightGradientEnd   = Color(0xFF2CD3BE);  // Light gradient end
 const Color kBlueIconColor      = Color(0xFF4A90E2);  // Stomach/pain sessions

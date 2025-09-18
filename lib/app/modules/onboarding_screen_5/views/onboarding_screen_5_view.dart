@@ -9,19 +9,19 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
   static final List<MedicalCondition> mainConditions = [
     MedicalCondition(name: 'Diabetes', color: 0xFF9C27B0, isLarge: true),
     MedicalCondition(name: 'Arthritis', color: 0xFF2196F3, isLarge: true),
-    MedicalCondition(name: 'OCD', color: 0xFFFF9800),
-    MedicalCondition(name: 'Stroke', color: 0xFFE91E63),
-    MedicalCondition(name: 'Alzheimer', color: 0xFF4CAF50),
-    MedicalCondition(name: 'GERD', color: 0xFFFF5722),
-    MedicalCondition(name: 'Thyroid', color: 0xFF9C27B0),
-    MedicalCondition(name: 'Cardiac', color: 0xFFF44336),
-    MedicalCondition(name: 'Depression', color: 0xFF607D8B),
+    MedicalCondition(name: 'OCD', color: 0xFFFF9800, isLarge: true),
+    MedicalCondition(name: 'Stroke', color: 0xFFE91E63, isLarge: true),
+    MedicalCondition(name: 'Alzheimer', color: 0xFF4CAF50, isLarge: true),
+    MedicalCondition(name: 'GERD', color: 0xFFFF5722, isLarge: true),
+    MedicalCondition(name: 'Thyroid', color: 0xFF9C27B0, isLarge: true),
+    MedicalCondition(name: 'Cardiac', color: 0xFFF44336, isLarge: true),
+    MedicalCondition(name: 'Depression', color: 0xFF607D8B, isLarge: true),
   ];
 
   static final List<MedicalCondition> additionalConditions = [
-    MedicalCondition(name: 'Asthma', color: 0xFF4CAF50),
-    MedicalCondition(name: 'Hypertension', color: 0xFFF44336),
-    MedicalCondition(name: 'Anxiety', color: 0xFF9C27B0),
+    MedicalCondition(name: 'Asthma', color: 0xFF4CAF50, isLarge: true),
+    MedicalCondition(name: 'Hypertension', color: 0xFFF44336, isLarge: true),
+    MedicalCondition(name: 'Anxiety', color: 0xFF9C27B0, isLarge: true),
     MedicalCondition(name: 'Migraine', color: 0xFF2196F3),
     MedicalCondition(name: 'Insomnia', color: 0xFF607D8B),
     MedicalCondition(name: 'Allergies', color: 0xFFFF9800),
@@ -37,23 +37,25 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: kPrimaryColor,
+       backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
           child: Column(
             children: [
-              
-              // Top navigation bar
+              // Top bar
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightTextButtonColor,
+                      color: isDark ? kDarkCardBg : kButtonColor,
                       borderRadius: BorderRadius.circular(12),
+                      
                     ),
                     child: GestureDetector(
                       onTap: controller.goBack,
@@ -79,7 +81,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? kDarkCardBg : Colors.grey[100],
                     borderRadius: BorderRadius.circular(24),
                   ),
                   child: Column(
@@ -97,7 +99,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey[800],
+                                color: isDark ? Colors.white : Colors.grey[800],
                                 height: 1.2,
                               ),
                             ),
@@ -110,7 +112,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   '${controller.totalIssues} Total',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: Colors.grey[500],
+                                    color: isDark ? Colors.white70 : Colors.grey[500],
                                   ),
                                 ),
                                 SizedBox(width: 20),
@@ -119,7 +121,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
-                                    color: kPrimaryColor,
+                                    color: isDark ? kLightCardColor : kPrimaryColor,
                                   ),
                                 )),
                               ],
@@ -170,7 +172,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   padding: EdgeInsets.symmetric(vertical: 12),
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: Colors.grey[300]!,
+                                      color: isDark ? kLightCardFontColor : Colors.grey[300]!,
                                       style: BorderStyle.solid,
                                       width: 1,
                                     ),
@@ -182,14 +184,14 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                       Icon(
                                         Icons.add,
                                         size: 18,
-                                        color: Colors.grey[600],
+                                        color: isDark ? Colors.white70 : Colors.grey[600],
                                       ),
                                       SizedBox(width: 8),
                                       Text(
                                         'View more conditions',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          color: Colors.grey[600],
+                                          color: isDark ? Colors.white70 : Colors.grey[600],
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -213,7 +215,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                             ElevatedButton(
                               onPressed: controller.completeOnboarding,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: kLightButtonColor,
+                                backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor,
                                 minimumSize: Size(double.infinity, 56),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -225,7 +227,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Colors.white,
+                                  color: isDark ? Colors.white : Colors.grey[800],
                                 ),
                               ),
                             ),
@@ -246,6 +248,8 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
   }
 
   Widget _buildMedicalChip(String condition, Color color, {bool isLarge = false}) {
+    final theme = Theme.of(Get.context!);
+    final isDark = theme.brightness == Brightness.dark;
     return Obx(() {
       final isSelected = controller.selectedIssues.contains(condition);
       
@@ -257,10 +261,10 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
             vertical: isLarge ? 12 : 8,
           ),
           decoration: BoxDecoration(
-            color: isSelected ? color.withOpacity(0.15) : Colors.grey[50],
+            color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
             borderRadius: BorderRadius.circular(isLarge ? 12 : 16),
             border: Border.all(
-              color: isSelected ? color : Colors.grey[300]!,
+              color: isSelected ? color : isDark ? kLightCardFontColor : Colors.grey[300]!,
               width: isSelected ? 2 : 1,
             ),
           ),
@@ -269,7 +273,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
             style: TextStyle(
               fontSize: isLarge ? 16 : 14,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-              color: isSelected ? color : Colors.grey[700],
+              color: isSelected ? color : isDark ? Colors.white : Colors.grey[700],
             ),
             textAlign: TextAlign.center,
           ),
@@ -279,7 +283,8 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
   }
 
   void _showMoreConditionsDialog() {
-
+    final theme = Theme.of(Get.context!);
+    final isDark = theme.brightness == Brightness.dark;
     Get.dialog(
       Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -292,7 +297,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
               Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: kPrimaryColor.withOpacity(0.1),
+                  color: isDark ? kDarkPrimaryBg.withOpacity(0.1) : kLightPrimaryColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -306,12 +311,12 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
+                        color: isDark ? Colors.white : Colors.grey[800],
                       ),
                     ),
                     GestureDetector(
                       onTap: () => Get.back(),
-                      child: Icon(Icons.close, color: Colors.grey[600]),
+                      child: Icon(Icons.close, color: isDark ? Colors.white : Colors.grey[600]),
                     ),
                   ],
                 ),
@@ -334,10 +339,10 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                           child: Container(
                             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                             decoration: BoxDecoration(
-                              color: isSelected ? color.withOpacity(0.15) : Colors.grey[50],
+                              color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: isSelected ? color : Colors.grey[300]!,
+                                color: isSelected ? color : isDark ? kLightCardFontColor : Colors.grey[300]!,
                                 width: isSelected ? 2 : 1,
                               ),
                             ),
@@ -346,7 +351,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                                color: isSelected ? color : Colors.grey[700],
+                                color: isSelected ? color : isDark ? Colors.white : Colors.grey[700],
                               ),
                             ),
                           ),
