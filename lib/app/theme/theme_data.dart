@@ -9,6 +9,20 @@ const Color kLargeTextColor = Color(0xFFE4E5E7);
 const Color kPrimaryColor = Color(0xff14b7a5);
 const Color kSecondaryColor = Color(0xFF1E283B);
 
+// 🔹 Extra Colors (New)
+const Color kNewTealColor = Color(0xFF13B7A5);     
+const Color kDarkPrimaryBg = Color(0xFF1E293A);    
+const Color kDarkCardBg = Color(0xFF384050);       
+const Color kDarkTextFieldBg = Color(0xFF020617);  
+const Color kDarkSecondaryBg = Color(0xFF1E293B);  
+const Color kLightGradientStart = Color(0xFF0C9185);  // Light gradient start
+const Color kLightGradientEnd   = Color(0xFF2CD3BE);  // Light gradient end
+const Color kBlueIconColor      = Color(0xFF4A90E2);  // Stomach/pain sessions
+const Color kGreenIconColor     = Color(0xFF50C878);  // Eye/vision sessions
+const Color kRedIconColor       = Color(0xFFFF6B6B);  // Knee/joint sessions
+const Color kCyanIconColor      = Color(0xFF4ECDC4);  // Diabetes/blood sessions
+const Color kDefaultIconColor   = Color(0xFF0C9185);  // Fallback session icon
+
 //light theme
 const Color kLightButtonColor = Color(0xFF14B7A5);
 const Color kLightScaffoldColor = Color(0xFFFFFFFF);
@@ -21,6 +35,7 @@ const Color kLightTextButtonColor = Color(0xFF50C7B9);
 const Color kLightVeryLargeFontColor = Color(0xFF202A3C);
 const Color kLightPrimaryColor = Color(0xFF14B7A5);
 const Color kLightSecondaryColor = Color(0xFFF0F4F8);
+
 
 // dark theme
 const Color kDarkBackgroundColor = Color(0xFF000000);

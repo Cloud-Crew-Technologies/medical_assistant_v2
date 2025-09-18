@@ -9,7 +9,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7FFFD4),
+      backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -22,7 +22,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightButtonColor,
+                      color: kLightTextButtonColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -43,7 +43,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       alignment: Alignment.centerRight,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF26C6A8),
+                          color: kGlowingTealColor,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -130,9 +130,9 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       // Slider
                       Obx(() => SliderTheme(
                         data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: Color(0xFF26C6A8),
+                          activeTrackColor: kButtonColor,
                           inactiveTrackColor: Colors.grey[300],
-                          thumbColor: Color(0xFF26C6A8),
+                          thumbColor: kButtonColor,
                           trackHeight: 6,
                           thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
                         ),
@@ -151,7 +151,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF26C6A8),
+                          backgroundColor: kLightButtonColor,
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),

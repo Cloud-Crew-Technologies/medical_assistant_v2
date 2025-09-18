@@ -26,7 +26,7 @@ class ChatScreenView extends GetView<ChatController> {
           ),
           child: AppBar(
             backgroundColor:
-                isDark ? const Color(0xFF1E293A) : kLightPrimaryColor,
+                isDark ? kDarkPrimaryBg : kLightPrimaryColor,
             elevation: 5,
             toolbarHeight: 100,
             titleSpacing: 0,
@@ -35,7 +35,7 @@ class ChatScreenView extends GetView<ChatController> {
             leading: Container(
               margin: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF384050) : kButtonColor,
+                color: isDark ? kDarkCardBg : kButtonColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: IconButton(
@@ -74,7 +74,7 @@ class ChatScreenView extends GetView<ChatController> {
               Container(
                 margin: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: isDark ? const Color(0xFF384050) : kButtonColor,
+                  color: isDark ? kDarkCardBg : kButtonColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: IconButton(
@@ -111,9 +111,9 @@ class ChatScreenView extends GetView<ChatController> {
             padding: const EdgeInsets.all(25),
             decoration: BoxDecoration(
               color:
-                  isDark ? const Color(0xFF1E293A) : kLightPrimaryColor,
+                  isDark ? kDarkPrimaryBg : kLightPrimaryColor,
               border: Border(
-                top: BorderSide(color: const Color(0xFF384050)),
+                top: BorderSide(color: kDarkCardBg),
               ),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(35),
@@ -133,7 +133,7 @@ class ChatScreenView extends GetView<ChatController> {
                       ),
                       filled: true,
                       fillColor:
-                          isDark ? const Color(0xFF020617) : kLightSecondaryColor,
+                          isDark ?  kDarkTextFieldBg : kLightSecondaryColor,
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 14,
                         vertical: 20,
@@ -145,7 +145,7 @@ class ChatScreenView extends GetView<ChatController> {
                 const SizedBox(width: 8),
                 Container(
                   decoration: BoxDecoration(
-                    color: isDark ? const Color(0xFF384050) : kLightCardColor,
+                    color: isDark ? kDarkCardBg : kLightCardColor,
                     borderRadius: BorderRadius.circular(isDark ? 16 : 12),
                     boxShadow: isDark
                         ? [
@@ -223,8 +223,8 @@ class ChatBubble extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: message.isMe
-                    ? const Color(0xFF13B7A5)
-                    : (isDark ? const Color(0xFF1E293B) : kLightCardColor),
+                    ?  kNewTealColor
+                    : (isDark ? kNewTealColor : kLightCardColor),
                 borderRadius: BorderRadius.circular(16).copyWith(
                   bottomLeft:
                       message.isMe ? const Radius.circular(16) : Radius.zero,

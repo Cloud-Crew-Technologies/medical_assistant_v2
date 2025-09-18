@@ -38,7 +38,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7FFFD4),
+      backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -52,12 +52,12 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightButtonColor,
+                      color: kLightTextButtonColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: GestureDetector(
                       onTap: controller.goBack,
-                      child: Icon(Icons.arrow_back_ios, size: 20, color: Colors.black87),
+                      child: Icon(Icons.arrow_back_ios, size: 20, color: kWhiteTextColor),
                     ),
                   ),
                   // Progress bar - fully complete
@@ -65,7 +65,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                     width: 100,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Color(0xFF26C6A8),
+                      color: kGlowingTealColor,
                       borderRadius: BorderRadius.circular(2),
                     ),
                   ),
@@ -119,7 +119,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF26C6A8),
+                                    color: kPrimaryColor,
                                   ),
                                 )),
                               ],
@@ -213,7 +213,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                             ElevatedButton(
                               onPressed: controller.completeOnboarding,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFF26C6A8),
+                                backgroundColor: kLightButtonColor,
                                 minimumSize: Size(double.infinity, 56),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -292,7 +292,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
               Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Color(0xFF26C6A8).withOpacity(0.1),
+                  color: kPrimaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),

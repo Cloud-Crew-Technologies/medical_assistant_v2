@@ -23,7 +23,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7FFFD4),
+      backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -36,7 +36,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightButtonColor,
+                      color: kLightTextButtonColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -57,7 +57,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                       alignment: Alignment.center,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF26C6A8),
+                          color: kGlowingTealColor,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),

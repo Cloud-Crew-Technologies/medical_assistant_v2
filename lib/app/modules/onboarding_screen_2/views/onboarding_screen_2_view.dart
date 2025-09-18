@@ -9,7 +9,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF7FFFD4),
+      backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -23,7 +23,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightButtonColor,
+                      color: kLightTextButtonColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -45,7 +45,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                       alignment: Alignment.centerLeft,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: kLightButtonColor,
+                          color: kGlowingTealColor,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -58,7 +58,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                     child: Text(
                       'Skip',
                       style: TextStyle(
-                        color: Colors.black87,
+                        color: kWhiteTextColor,
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                       ),
@@ -123,7 +123,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                                 width: double.infinity,
                                 padding: const EdgeInsets.symmetric(vertical: 16),
                                 decoration: BoxDecoration(
-                                  color: isSelected ? const Color(0xFF7FFFD4) : Colors.transparent,
+                                  color: isSelected ? kPrimaryColor : Colors.transparent,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
@@ -147,7 +147,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF26C6A8),
+                          backgroundColor: kLightButtonColor,
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
