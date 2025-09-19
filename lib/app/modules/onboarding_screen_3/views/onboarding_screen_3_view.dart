@@ -16,7 +16,11 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
     Role(title: 'Student', icon: Icons.school, color: Color(0xFF2196F3)),
     Role(title: 'Employed', icon: Icons.business, color: Color(0xFFFF9800)),
     Role(title: 'Self-Employed', icon: Icons.work, color: Color(0xFF4CAF50)),
-    Role(title: 'Unemployed', icon: Icons.person_outline, color: Color(0xFF9C27B0)),
+    Role(
+      title: 'Unemployed',
+      icon: Icons.person_outline,
+      color: Color(0xFF9C27B0),
+    ),
   ];
   const OnboardingScreen3View({super.key});
 
@@ -39,9 +43,8 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: isDark ? kDarkCardBg : kButtonColor,
+                      color: isDark ? kDarkCardBg : kLightCardColor,
                       borderRadius: BorderRadius.circular(12),
-                      
                     ),
                     child: GestureDetector(
                       onTap: controller.goBack,
@@ -52,7 +55,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                     width: 100,
                     height: 4,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.3),
+                      color: Colors.black.withOpacity(0.3),
                       borderRadius: BorderRadius.circular(2),
                     ),
                     child: FractionallySizedBox(
@@ -68,12 +71,15 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                   ),
                   GestureDetector(
                     onTap: controller.skip,
-                    child: Text('Skip', style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: 40),
-              
+
               // Main content card
               Expanded(
                 child: Container(
@@ -86,7 +92,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                   child: Column(
                     children: [
                       SizedBox(height: 20),
-                      
+
                       // Title
                       Text(
                         'Are you a Student,\n or Employeed?',
@@ -98,7 +104,7 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                         ),
                       ),
                       SizedBox(height: 40),
-                      
+
                       // Role cards
                       Expanded(
                         flex: 2,
@@ -106,7 +112,8 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                           // physics: ScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: roles.length,
-                          separatorBuilder: (context, index) => SizedBox(height: 16),
+                          separatorBuilder: (context, index) =>
+                              SizedBox(height: 16),
                           itemBuilder: (context, index) => _buildRoleCard(
                             roles[index].title,
                             roles[index].icon,
@@ -115,12 +122,14 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                         ),
                       ),
                       SizedBox(height: 20),
-                      
+
                       // Continue button
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor,
+                          backgroundColor: isDark
+                              ? kDarkSecondaryBg.withOpacity(0.5)
+                              : kcontinueButtonColor,
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -138,7 +147,10 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
                               ),
                             ),
                             SizedBox(width: 8),
-                            Icon(Icons.arrow_forward, color: isDark ? Colors.white : Colors.black),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: isDark ? Colors.white : Colors.black,
+                            ),
                           ],
                         ),
                       ),
@@ -157,38 +169,48 @@ class OnboardingScreen3View extends GetView<OnboardingScreen3Controller> {
   Widget _buildRoleCard(String title, IconData icon, Color color) {
     final theme = Theme.of(Get.context!);
     final isDark = theme.brightness == Brightness.dark;
-    return Obx(() => GestureDetector(
-      onTap: () => controller.selectRole(title),
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: controller.selectedRole.value == title ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(
-            color: controller.selectedRole.value == title ? isDark ? color.withOpacity(0.5) : color : isDark ? kLightCardFontColor : Colors.grey[300]!,
-            width: 2,
+    return Obx(
+      () => GestureDetector(
+        onTap: () => controller.selectRole(title),
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: controller.selectedRole.value == title
+                ? isDark
+                      ? kDarkSecondaryBg.withOpacity(0.4)
+                      : color.withOpacity(0.2)
+                : isDark
+                ? kDarkSecondaryBg.withOpacity(0.4)
+                : Colors.grey[50],
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+              color: controller.selectedRole.value == title
+                  ? isDark
+                        ? color.withOpacity(0.5)
+                        : color
+                  : isDark
+                  ? kLightCardFontColor
+                  : Colors.grey[300]!,
+              width: 2,
+            ),
+          ),
+          child: Column(
+            children: [
+              Icon(icon, size: 40, color: color),
+              SizedBox(height: 8),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: isDark ? Colors.white : Colors.grey[800],
+                ),
+              ),
+            ],
           ),
         ),
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              size: 40,
-              color: color,
-            ),
-            SizedBox(height: 8),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-                color: isDark ? Colors.white : Colors.grey[800],
-              ),
-            ),
-          ],
-        ),
       ),
-    ));
+    );
   }
 }

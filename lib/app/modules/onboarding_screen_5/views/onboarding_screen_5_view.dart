@@ -40,7 +40,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-       backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
+      backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -53,13 +53,16 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: isDark ? kDarkCardBg : kButtonColor,
+                      color: isDark ? kDarkCardBg : kLightCardColor,
                       borderRadius: BorderRadius.circular(12),
-                      
                     ),
                     child: GestureDetector(
                       onTap: controller.goBack,
-                      child: Icon(Icons.arrow_back_ios, size: 20, color: kWhiteTextColor),
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   // Progress bar - fully complete
@@ -75,7 +78,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                 ],
               ),
               SizedBox(height: 30),
-              
+
               // Main content card
               Expanded(
                 child: Container(
@@ -104,7 +107,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                               ),
                             ),
                             SizedBox(height: 12),
-                            
+
                             // Total and selected count
                             Row(
                               children: [
@@ -112,24 +115,30 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   '${controller.totalIssues} Total',
                                   style: TextStyle(
                                     fontSize: 14,
-                                    color: isDark ? Colors.white70 : Colors.grey[500],
+                                    color: isDark
+                                        ? Colors.white70
+                                        : Colors.grey[500],
                                   ),
                                 ),
                                 SizedBox(width: 20),
-                                Obx(() => Text(
-                                  'Selected: ${controller.selectedIssues.length}',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: isDark ? kLightCardColor : kPrimaryColor,
+                                Obx(
+                                  () => Text(
+                                    'Selected: ${controller.selectedIssues.length}',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: isDark
+                                          ? kLightCardColor
+                                          : kPrimaryColor,
+                                    ),
                                   ),
-                                )),
+                                ),
                               ],
                             ),
                           ],
                         ),
                       ),
-                      
+
                       // Medical conditions grid
                       Expanded(
                         child: Column(
@@ -140,12 +149,13 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                 width: double.infinity,
                                 padding: EdgeInsets.symmetric(horizontal: 24),
                                 child: GridView.builder(
-                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: 2.5,
-                                    crossAxisSpacing: 12,
-                                    mainAxisSpacing: 12,
-                                  ),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        childAspectRatio: 2.5,
+                                        crossAxisSpacing: 12,
+                                        mainAxisSpacing: 12,
+                                      ),
                                   itemCount: mainConditions.length,
                                   itemBuilder: (context, index) {
                                     final condition = mainConditions[index];
@@ -158,7 +168,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                 ),
                               ),
                             ),
-                            
+
                             // Add more conditions button
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 24),
@@ -172,7 +182,9 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                   padding: EdgeInsets.symmetric(vertical: 12),
                                   decoration: BoxDecoration(
                                     border: Border.all(
-                                      color: isDark ? kLightCardFontColor : Colors.grey[300]!,
+                                      color: isDark
+                                          ? kLightCardFontColor
+                                          : Colors.grey[300]!,
                                       style: BorderStyle.solid,
                                       width: 1,
                                     ),
@@ -184,14 +196,18 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                                       Icon(
                                         Icons.add,
                                         size: 18,
-                                        color: isDark ? Colors.white70 : Colors.grey[600],
+                                        color: isDark
+                                            ? Colors.white70
+                                            : Colors.grey[600],
                                       ),
                                       SizedBox(width: 8),
                                       Text(
                                         'View more conditions',
                                         style: TextStyle(
                                           fontSize: 14,
-                                          color: isDark ? Colors.white70 : Colors.grey[600],
+                                          color: isDark
+                                              ? Colors.white70
+                                              : Colors.grey[600],
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -204,7 +220,7 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                           ],
                         ),
                       ),
-                      
+
                       // Bottom section with complete button
                       Container(
                         padding: EdgeInsets.all(24),
@@ -215,24 +231,26 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                             ElevatedButton(
                               onPressed: controller.completeOnboarding,
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor,
+                                backgroundColor: isDark
+                                    ? kDarkSecondaryBg.withOpacity(0.5)
+                                    : kcontinueButtonColor,
                                 minimumSize: Size(double.infinity, 56),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
-                                elevation: 0,
                               ),
                               child: Text(
                                 'Complete Setup',
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: isDark ? Colors.white : Colors.grey[800],
+                                  color: isDark
+                                      ? Colors.white
+                                      : Colors.grey[800],
                                 ),
                               ),
                             ),
                             SizedBox(height: 20),
-                            
                           ],
                         ),
                       ),
@@ -247,12 +265,16 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
     );
   }
 
-  Widget _buildMedicalChip(String condition, Color color, {bool isLarge = false}) {
+  Widget _buildMedicalChip(
+    String condition,
+    Color color, {
+    bool isLarge = false,
+  }) {
     final theme = Theme.of(Get.context!);
     final isDark = theme.brightness == Brightness.dark;
     return Obx(() {
       final isSelected = controller.selectedIssues.contains(condition);
-      
+
       return GestureDetector(
         onTap: () => controller.toggleIssue(condition),
         child: Container(
@@ -261,10 +283,20 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
             vertical: isLarge ? 12 : 8,
           ),
           decoration: BoxDecoration(
-            color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
+            color: isSelected
+                ? isDark
+                      ? kDarkSecondaryBg.withOpacity(0.4)
+                      : color.withOpacity(0.2)
+                : isDark
+                ? kDarkSecondaryBg.withOpacity(0.4)
+                : Colors.grey[50],
             borderRadius: BorderRadius.circular(isLarge ? 12 : 16),
             border: Border.all(
-              color: isSelected ? color : isDark ? kLightCardFontColor : Colors.grey[300]!,
+              color: isSelected
+                  ? color
+                  : isDark
+                  ? kLightCardFontColor
+                  : Colors.grey[300]!,
               width: isSelected ? 2 : 1,
             ),
           ),
@@ -273,7 +305,11 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
             style: TextStyle(
               fontSize: isLarge ? 16 : 14,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-              color: isSelected ? color : isDark ? Colors.white : Colors.grey[700],
+              color: isSelected
+                  ? color
+                  : isDark
+                  ? Colors.white
+                  : Colors.grey[700],
             ),
             textAlign: TextAlign.center,
           ),
@@ -297,7 +333,9 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
               Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: isDark ? kDarkPrimaryBg.withOpacity(0.1) : kLightPrimaryColor,
+                  color: isDark
+                      ? kDarkPrimaryBg.withOpacity(0.1)
+                      : kLightPrimaryColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16),
@@ -316,12 +354,15 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                     ),
                     GestureDetector(
                       onTap: () => Get.back(),
-                      child: Icon(Icons.close, color: isDark ? Colors.white : Colors.grey[600]),
+                      child: Icon(
+                        Icons.close,
+                        color: isDark ? Colors.white : Colors.grey[600],
+                      ),
                     ),
                   ],
                 ),
               ),
-              
+
               // Scrollable conditions list
               Flexible(
                 child: SingleChildScrollView(
@@ -329,35 +370,58 @@ class OnboardingScreen5View extends GetView<OnboardingScreen5Controller> {
                   child: Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: additionalConditions.map((condition) => 
-                      Obx(() {
-                        final isSelected = controller.selectedIssues.contains(condition.name);
-                        final color = Color(condition.color);
-                        
-                        return GestureDetector(
-                          onTap: () => controller.toggleIssue(condition.name),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            decoration: BoxDecoration(
-                              color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : color.withOpacity(0.2) : isDark ? kDarkSecondaryBg.withOpacity(0.4) : Colors.grey[50],
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                color: isSelected ? color : isDark ? kLightCardFontColor : Colors.grey[300]!,
-                                width: isSelected ? 2 : 1,
+                    children: additionalConditions
+                        .map(
+                          (condition) => Obx(() {
+                            final isSelected = controller.selectedIssues
+                                .contains(condition.name);
+                            final color = Color(condition.color);
+
+                            return GestureDetector(
+                              onTap: () =>
+                                  controller.toggleIssue(condition.name),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 8,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: isSelected
+                                      ? isDark
+                                            ? kDarkSecondaryBg.withOpacity(0.4)
+                                            : color.withOpacity(0.2)
+                                      : isDark
+                                      ? kDarkSecondaryBg.withOpacity(0.4)
+                                      : Colors.grey[50],
+                                  borderRadius: BorderRadius.circular(16),
+                                  border: Border.all(
+                                    color: isSelected
+                                        ? color
+                                        : isDark
+                                        ? kLightCardFontColor
+                                        : Colors.grey[300]!,
+                                    width: isSelected ? 2 : 1,
+                                  ),
+                                ),
+                                child: Text(
+                                  condition.name,
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: isSelected
+                                        ? FontWeight.w600
+                                        : FontWeight.w500,
+                                    color: isSelected
+                                        ? color
+                                        : isDark
+                                        ? Colors.white
+                                        : Colors.grey[700],
+                                  ),
+                                ),
                               ),
-                            ),
-                            child: Text(
-                              condition.name,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                                color: isSelected ? color : isDark ? Colors.white : Colors.grey[700],
-                              ),
-                            ),
-                          ),
-                        );
-                      })
-                    ).toList(),
+                            );
+                          }),
+                        )
+                        .toList(),
                   ),
                 ),
               ),

@@ -382,7 +382,7 @@ class ChatHistoryView extends GetView<ChatHistoryController> {
                               horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color:
-                                isDark ? kDarkSecondaryBg : Colors.grey[100],
+                                isDark ? kDarkBackgroundColor.withOpacity(0.3) : Colors.grey[100],
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Row(

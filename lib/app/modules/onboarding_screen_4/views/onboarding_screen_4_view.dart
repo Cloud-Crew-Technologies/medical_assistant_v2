@@ -24,7 +24,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: isDark ? kDarkCardBg : kButtonColor,
+                      color: isDark ? kDarkCardBg : kLightCardColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -53,7 +53,13 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                   ),
                   GestureDetector(
                     onTap: controller.skip,
-                    child: Text('Skip', style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),

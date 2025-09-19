@@ -26,7 +26,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: isDark ? kDarkCardBg : kButtonColor,
+                      color: isDark ? kDarkCardBg : kLightCardColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -126,7 +126,7 @@ class OnboardingScreen2View extends GetView<OnboardingScreen2Controller> {
                                 width: double.infinity,
                                 padding: const EdgeInsets.symmetric(vertical: 16),
                                 decoration: BoxDecoration(
-                                  color: isSelected ? isDark ? kDarkSecondaryBg.withOpacity(0.4) : kcontinueButtonColor.withOpacity(0.5) : Colors.transparent,
+                                  color: isSelected ? isDark ? kDarkBackgroundColor.withOpacity(0.3) : kcontinueButtonColor.withOpacity(0.5) : Colors.transparent,
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: Text(
