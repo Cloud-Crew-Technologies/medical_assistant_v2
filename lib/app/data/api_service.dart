@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String _baseUrl = 'http://10.195.18.38:3000';
+  static const String _baseUrl = 'https://token.skillhiveinnovations.com';
 
   static Future<String> getToken() async {
     try {
