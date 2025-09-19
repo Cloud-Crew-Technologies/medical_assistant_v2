@@ -8,8 +8,10 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: Color(0xFF7FFFD4),
+      backgroundColor: isDark ? kDarkPrimaryBg : kLightPrimaryColor,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(24.0),
@@ -22,7 +24,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                   Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: kLightButtonColor,
+                      color: isDark ? kDarkCardBg : kLightCardColor,
                       borderRadius: BorderRadius.circular(12),
                       
                     ),
@@ -43,7 +45,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       alignment: Alignment.centerRight,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color(0xFF26C6A8),
+                          color: kGlowingTealColor,
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -51,7 +53,13 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                   ),
                   GestureDetector(
                     onTap: controller.skip,
-                    child: Text('Skip', style: TextStyle(fontSize: 16)),
+                    child: Text(
+                      'Skip',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -62,7 +70,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: isDark ? kDarkCardBg : Colors.grey[100],
                     borderRadius: BorderRadius.circular(24),
                   ),
                   padding: EdgeInsets.all(24),
@@ -77,7 +85,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey[800],
+                          color: isDark ? Colors.white : Colors.grey[800],
                         ),
                       ),
                       SizedBox(height: 60),
@@ -91,7 +99,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                             style: TextStyle(
                               fontSize: 120,
                               fontWeight: FontWeight.bold,
-                              color: Colors.grey[800],
+                              color: isDark ? Colors.white : Colors.grey[800],
                             ),
                           ),
                           SizedBox(height: 16),
@@ -102,7 +110,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w600,
-                              color: Colors.grey[800],
+                              color: isDark ? Colors.white : Colors.grey[800],
                             ),
                           ),
                           SizedBox(height: 8),
@@ -111,13 +119,13 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.access_time, size: 16, color: Colors.grey[600]),
+                              Icon(Icons.access_time, size: 16, color: isDark ? Colors.white : Colors.grey[600]),
                               SizedBox(width: 4),
                               Text(
                                 controller.currentSleepDescription,
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Colors.grey[600],
+                                  color: isDark ? Colors.white : Colors.grey[600],
                                 ),
                               ),
                             ],
@@ -130,9 +138,9 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       // Slider
                       Obx(() => SliderTheme(
                         data: SliderTheme.of(context).copyWith(
-                          activeTrackColor: Color(0xFF26C6A8),
+                          activeTrackColor: isDark ? kLightCardFontColor : kButtonColor,
                           inactiveTrackColor: Colors.grey[300],
-                          thumbColor: Color(0xFF26C6A8),
+                          thumbColor: isDark ? kLightCardFontColor : kButtonColor,
                           trackHeight: 6,
                           thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12),
                         ),
@@ -151,7 +159,7 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                       ElevatedButton(
                         onPressed: controller.continueToNext,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF26C6A8),
+                          backgroundColor: isDark ? kDarkSecondaryBg.withOpacity(0.5) : kcontinueButtonColor,
                           minimumSize: Size(double.infinity, 56),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),
@@ -165,11 +173,11 @@ class OnboardingScreen4View extends GetView<OnboardingScreen4Controller> {
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: Colors.white,
+                                color:  isDark ? Colors.white : Colors.black,
                               ),
                             ),
                             SizedBox(width: 8),
-                            Icon(Icons.arrow_forward, color: Colors.white),
+                            Icon(Icons.arrow_forward, color: isDark ? Colors.white : Colors.black),
                           ],
                         ),
                       ),
