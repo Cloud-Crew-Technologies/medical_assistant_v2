@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:medical_assistant_v2/app/modules/Health_metrics_Screen/controllers/Health_metrics_controller.dart';
 import 'package:medical_assistant_v2/app/routes/app_pages.dart';
 import 'package:medical_assistant_v2/app/theme/theme_data.dart';
+import 'package:medical_assistant_v2/app/data/meet_service.dart';
 
 class HealthMetricsView extends GetView<HealthMetricsController> {
   const HealthMetricsView({Key? key}) : super(key: key);
@@ -177,8 +178,8 @@ class HealthMetricsView extends GetView<HealthMetricsController> {
                   itemBuilder: (context, index) {
                     final consult = controller.consultations[index];
                     return GestureDetector(
-                      onTap: () {
-                        Get.toNamed(Routes.MEET_CONNECT);
+                      onTap: () async {
+                        await MeetService.connectDirectlyToRoom(context);
                       },
                       child: Container(
                         margin: const EdgeInsets.only(bottom: 12),
